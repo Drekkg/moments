@@ -4,9 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { Form, Button, Image, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
-import { Alert } from "bootstrap";
+
 
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({
@@ -23,10 +23,10 @@ const SignUpForm = () => {
         setSignUpData({
             ...signUpData, [event.target.name]: event.target.value,
         })
+
     }
 
     const handleSubmit = async (event) => {
-        console.log("Submitted" + " " + signUpData.username)
         event.preventDefault()
 
 
@@ -69,6 +69,13 @@ const SignUpForm = () => {
                                 onChange={handleChange}
                             />
                         </Form.Group>
+                        {errors.password1?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>{message}</Alert>
+                        )
+                        )}
+
+
+
                         <Form.Group className="mb-3" controlId="password2">
                             <Form.Label className="d-none">Confirm Password</Form.Label>
                             <Form.Control
@@ -80,6 +87,11 @@ const SignUpForm = () => {
                                 onChange={handleChange}
                             />
                         </Form.Group>
+                        {errors.username?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>{message}</Alert>
+                        )
+                        )}
+
 
                         <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
                             type="submit">
