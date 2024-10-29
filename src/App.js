@@ -5,8 +5,13 @@ import { Route, Switch } from "react-router-dom"
 import "./api/axiosDefaults.js"
 import SignUpForm from "./pages/auth/SignUpForm.js";
 import SignInForm from "./pages/auth/SignInForm.js";
+
+
+
 function App() {
+
   return (
+   
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
@@ -16,9 +21,9 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route render={() => <h1>Page not found!</h1>} />
         </Switch>
-
       </Container>
     </div>
+  
   );
 }
 
