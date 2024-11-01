@@ -24,7 +24,7 @@ const {expanded, setExpanded, ref} = useClickOutsideToggle();
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
